@@ -1,0 +1,29 @@
+<!-- Users -->
+<div class="col-md-5 col-md-offset-2 roundBox alignLeft">
+    <table class="table table-hover ">
+        <thead>
+        <tr>
+            <th>Users</th>
+            <th></th>
+            <th></th>
+            <th><button class="btn btn-primary alignRight">Create</button><button class="btn btn-primary alignRight">Edit</button></th>
+        </tr>
+        </thead>
+        <tbody>
+        <ul>
+            <li >
+                <tr  ng-repeat="item in User" >
+                    <th scope="row">{{item.id}}</th>
+                    <td>{{item.first_name}}</td>
+                    <td >{{item.last_name}}</td>
+                    <td class="alignRight"><i class="fa fa-pencil" fa-lg></i>&nbsp;<i class="fa fa-trash" fa-2x></i></td>
+                </tr>
+
+            </li>
+        </ul>
+        </tbody>
+
+    </table>
+
+</div>
+

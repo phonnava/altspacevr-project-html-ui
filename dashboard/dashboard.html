@@ -1,0 +1,76 @@
+    <div class="row center ">
+        <!-- Spaces -->
+        <div class="col-md-5 roundBox alignLeft ">
+
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Spaces</th>
+                    <th></th>
+                    <th></th>
+                    <th><a href="#!/Spaces" class="alignLeft panel-info">Update</a></th>
+                </tr>
+                </thead>
+                <tbody>
+                <ul>
+                    <li >
+                        <tr ng-repeat="item in Space" ng-if="$index < 3">
+                            <th scope="row">{{item.id}}</th>
+                            <td>{{item.title}}</td>
+                            <td >{{item.created_by}}</td>
+                        </tr>
+
+                    </li>
+                </ul>
+                </tbody>
+
+            </table>
+
+
+        </div>
+
+
+        <!-- Users -->
+        <div class="col-md-5 roundBox alignRight ">
+            <table class="table table-hover ">
+                <thead>
+                <tr>
+                    <th>Users</th>
+                    <th></th>
+                    <th></th>
+                    <th><a href="#!/Users" class=" alignRight">Update</a></a></th>
+                </tr>
+                </thead>
+                <tbody>
+                <ul>
+                    <li >
+                        <tr  ng-repeat="item in User | filter:query" ng-if="$index < 3">
+                            <th scope="row">{{item.id}}</th>
+                            <td>{{item.first_name}}</td>
+                            <td >{{item.last_name}}</td>
+                        </tr>
+
+                    </li>
+                </ul>
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+    <div class="row center">
+        <h2>Stastical Data</h2>
+        <div class="col-md-5 roundBox" ng-controller="stackChart">
+            <nvd3 options="options" data="data"></nvd3>
+
+        </div>
+
+
+
+    </div>
+
+
+
+

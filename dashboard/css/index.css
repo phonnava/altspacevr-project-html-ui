@@ -1,0 +1,137 @@
+.navbarclass{
+    display:inline-block;
+    width:20%;
+    max-height:100%;
+    text-align: right;
+    background-color:lightcyan;
+    float:right;
+    overflow-x:hidden;
+
+}
+.navbar{
+    margin-bottom:0px;
+}
+.icon{
+    position:absolute;
+    margin-top:-10px;
+}
+
+.sideBar{
+
+    color:white;
+    float:right;
+    min-height:600px;
+
+}
+
+
+.alignRight{
+    float:right;
+
+}
+
+.alignLeft{
+    float:left;
+
+}
+.roundBox{
+    border:2px solid darkgrey;
+    border-radius:15px;
+    margin:40px;
+
+}
+
+.squareBox{
+    margin:20px;
+    border:2px solid darkgrey;
+    float:right;
+}
+table td,th {
+    border-top: none !important;
+}
+
+.padding{
+    padding-top:25%;
+}
+
+
+ul li{
+    list-style-type: none;
+    padding-left:10px;
+
+}
+.twoCol{
+    columns: 2;
+}
+
+
+
+.navbar-nav{
+    padding-left:200px;
+}
+.container{
+    width:100%;
+}
+#right{
+    display:inline-block;
+    text-align:left;
+    vertical-align: top;
+    float:left;
+
+
+}
+.container-fluid{
+    margin-left:1px;
+    padding:0px;
+    min-width:600px;
+    min-height:500px;
+}
+.nav-item{
+    margin-right:10px;
+    margin-top:5px;
+}
+
+.navbar-default{
+    background-color:lightcyan;
+    border:3px solid white;
+
+}
+.search{
+    float:right;
+    text-align: right;
+    margin-top:10px;
+}
+.navHeader{
+    vertical-align: middle;
+
+}
+.navbar-left{
+    float:left;
+}
+
+.navbar-right{
+    float:right;
+    padding-right:20px;
+}
+.navbar-brand{
+    width:2px;
+    height:2px;
+}
+
+
+.dashboardclass{
+    padding:2%;
+    text-align: center;
+
+}
+
+.center{
+    display: block;
+    margin: auto;
+}
+.content{
+
+}
+.dropdown-menu{
+
+}

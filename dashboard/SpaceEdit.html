@@ -1,0 +1,42 @@
+<div class="row">
+    <!-- Spaces -->
+
+    <div class="col-sm-11 squareBox twoCol">
+        <form >
+
+            <div class="form-group " ng-repeat="(key, value) in currentSelected">
+                <label for="usr">{{key}}:</label>
+                <span ng-if="key == 'members'">
+                    <select class="form-control" ng-model="currentSelected[key]" multiple >
+                            <option ng-repeat="(key,value) in userMap"
+                                    value={{key}}>{{value}}
+                            </option>
+                    </select>
+                </span>
+                <span  ng-if="getType(value) != 'boolean' && key != 'members'">
+                        <input class="form-control"type="text" ng-model="currentSelected[key]" ng-disabled="getReadOnly(key)" >
+                </span>
+                <span ng-if="getType(value) === 'boolean' ">
+                        <input class="form-check" type="checkbox" ng-model="currentSelected[key]">
+                </span>
+
+
+
+
+            </div>
+        </form>
+
+        <button type="save" class="btn btn-primary alignRight" ng-click="save(currentSelected,membersList);">Save</button>
+        <br>
+
+
+
+
+    </div>
+</div>
+
+
+
+
+
+

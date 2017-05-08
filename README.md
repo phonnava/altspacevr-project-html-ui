@@ -35,7 +35,24 @@ Take a look at the `example/` folder for a working example. You should be able t
 - You should also be able to create and delete spaces.
 - The changes you make to spaces should be persisted to the data store through the provided API.
 
+//Poornima:
+The Admin Dashboard is a landing page that consists of many grids and reports.
+1. Dashboard has a small subset of User and Spaces in panels
+2. If Admin wants to edit they are taken to Spaces,
+3.
+
 The requirements do not call for any form/model validation but feel free to add validation if you can.
+
+//Poornima
+Only form validation with respect to  created_by and members have been added.
+TBD: Validation checks will be soon added.
+
+//Poornima
+
+Spaces Page can be viewed, rows can be edited and deleted.
+Only single row edits have been enabled, An inline mass edit is a TBD, though its not a good design as user may commit mistakes.
+Deletes are single row,
+
 
 The `Data.js` file provided in the `lib/data/` folder implements a Promise-based data store which stores and retrieves simple JavaScript objects representing Users and Spaces. You should not have to modify the data store (at least for the Part 1 of the project) but you may have to wrap it with a shim, depending on what framework you choose.
 

@@ -44,14 +44,20 @@ The Admin Dashboard is a landing page that consists of many grids and reports.
 The requirements do not call for any form/model validation but feel free to add validation if you can.
 
 //Poornima
-Only form validation with respect to  created_by and members have been added.
 TBD: Validation checks will be soon added.
 
 //Poornima
 
+Used AngularJS, Bootstrap framework
 Spaces Page can be viewed, rows can be edited and deleted.
-Only single row edits have been enabled, An inline mass edit is a TBD, though its not a good design as user may commit mistakes.
-Deletes are single row,
+User Page can be viewed , rows can be edited and deleted
+Only single row edits & edits  have been enabled.
+Views have been broken in List View, Detail View & Edit/Create View
+id & created_by have been disabled to make edits by mistake
+Sidebar just has some events which lead to ALtVREvents page
+
+Dashboard consists of User and Space data but edits are always done in individual pages
+
 
 
 The `Data.js` file provided in the `lib/data/` folder implements a Promise-based data store which stores and retrieves simple JavaScript objects representing Users and Spaces. You should not have to modify the data store (at least for the Part 1 of the project) but you may have to wrap it with a shim, depending on what framework you choose.
@@ -99,6 +105,13 @@ The `admin` flag determines if a User is an admin or not. The `welcome` flag det
 The data store comes pre-loaded with data which you can see in the `lib/data/db.json` file.
 
 # Part 2 - Enhancements
+
+//Poornima
+Added Stats for Users and spaces
+Added a static stack graph with sample data to capture the devices used.
+Added USers Page along with Spaces Page
+Used NVD3, D3 and Angular NVD3 for graphs
+
 
 Now that you have a working admin interface, enhance it with improvements that showcase your skills and creativity. This is the open ended part of the project, and is your chance to blow us away! 
 

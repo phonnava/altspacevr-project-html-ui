@@ -18,8 +18,10 @@ dashboard.service('formService', function() {
         },
 
         getReadOnly:function(field){
-            readyOnly = false;
-            field == 'created_by'?readOnly = true:readOnly=false;
+            var readyOnly = false;
+            if(field == 'created_by' || field == 'id'){
+                var readOnly = true;
+            }
             return readOnly;
 
         },

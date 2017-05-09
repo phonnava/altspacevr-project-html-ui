@@ -14,8 +14,8 @@
                             </option>
                     </select>
                 </span>
-                <span  ng-if="getType(value) != 'boolean' && (key != 'members')">
-                        <input class="form-control"type="text" ng-model="currentSelected[key]" ng-disabled="getReadOnly(key)" >
+                <span  ng-if="getType(value) != 'boolean' && key != 'members'">
+                        <input class="form-control"type="text"  ng-model="currentSelected[key]" ng-disabled="getReadOnly(key)" >
                 </span>
                 <span ng-if="getType(value) === 'boolean' ">
                         <input class="form-check" type="checkbox" ng-model="currentSelected[key]">

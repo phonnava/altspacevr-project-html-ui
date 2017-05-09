@@ -23,6 +23,12 @@ dashboard.config(function($routeProvider) {
         .when("/SpaceEdit", {
             templateUrl : "SpaceEdit.html"
         })
+        .when("/UserDetail", {
+            templateUrl : "UserDetail.html"
+        })
+        .when("/UserEdit", {
+            templateUrl : "UserEdit.html"
+        })
 
 
 

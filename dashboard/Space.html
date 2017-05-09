@@ -1,14 +1,20 @@
 
     <div class="row">
         <!-- Spaces -->
+        <div class="col-sm-12 ">
+            <a  href="#!/SpaceEdit" ng-click="createNew()"class="btn btn-primary alignRight">Create</a></th>
 
+        </div>
         <div class="col-sm-11 squareBox alignLeft">
 
             <table class="table table-striped table-hover">
                 <thead>
                 <tr >
-                    <th ng-repeat="item in spaceHeader">
+                    <th ng-repeat="item in spaceHeader" >
                         {{item}}
+                    </th>
+                    <th>
+                        Action
                     </th>
 
                 </tr>
@@ -25,10 +31,12 @@
                                 <span ng-if="getType(value) === 'boolean' ">
                                     <input type="checkbox" ng-model="value" disabled>
                                 </span>
+                            </td>
                                 <!-- <input ng-model="value"> contenteditable -->
-                            <td class="alignRight">
-                                <a href="#!/SpaceEdit" ng-click="edit($index,Space);"><i class="fa fa-pencil" fa-lg></i></a>
-                                <a ng-click="delete(item);"></i>&nbsp;<i class="fa fa-trash" fa-2x></i></a></td>
+                            <td>
+                                <a href="#!/SpaceEdit" ng-click="edit($index,Space);"><i class="fa fa-pencil" ></i></a>
+                                <a ng-click="delete(item);"></i><i class="fa fa-trash" ></i></a>
+                            </td>
                         </tr>
 
                     </li>
@@ -37,11 +45,7 @@
 
             </table>
 
-            <div class="col-sm-11 rightAlign">
-                <a  href="#!/SpaceEdit" ng-click="createNew()"class="btn btn-primary alignRight">Create</a></th>
 
-
-            </div>
 
 
         </div>

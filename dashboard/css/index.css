@@ -10,6 +10,7 @@
 }
 .navbar{
     margin-bottom:0px;
+    background-color: dimgray;
 }
 .icon{
     position:absolute;
@@ -43,8 +44,10 @@
 
 .squareBox{
     margin:20px;
+    padding:2%;
     border:2px solid darkgrey;
     float:right;
+    text-align:left;
 }
 table td,th {
     border-top: none !important;
@@ -134,4 +137,17 @@ ul li{
 }
 .dropdown-menu{
 
+}
+
+th {
+    border-top: none !important;
+    text-align: center;
+
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+    background-color: lightcyan;
+}
+.dashIcon{
+    padding:2px;
 }

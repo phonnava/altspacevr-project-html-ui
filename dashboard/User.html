@@ -1,29 +1,52 @@
 <!-- Users -->
-<div class="col-md-5 col-md-offset-2 roundBox alignLeft">
-    <table class="table table-hover ">
+
+<div class="col-sm-12 ">
+    <a  href="#!/UserEdit" ng-click="createNewUser()"class="btn btn-primary alignRight">Create</a></th>
+</div>
+<div class="col-md-11 squareBox alignLeft">
+    <table class="table table-responsive table-striped ">
         <thead>
-        <tr>
-            <th>Users</th>
-            <th></th>
-            <th></th>
-            <th><button class="btn btn-primary alignRight">Create</button><button class="btn btn-primary alignRight">Edit</button></th>
+        <tr >
+            <th ng-repeat="item in userHeader" >
+                {{item}}
+            </th>
+            <th >
+                Action
+            </th>
+
         </tr>
+
+        </thead>
         </thead>
         <tbody>
         <ul>
             <li >
-                <tr  ng-repeat="item in User" >
-                    <th scope="row">{{item.id}}</th>
-                    <td>{{item.first_name}}</td>
-                    <td >{{item.last_name}}</td>
-                    <td class="alignRight"><i class="fa fa-pencil" fa-lg></i>&nbsp;<i class="fa fa-trash" fa-2x></i></td>
+
+                <tr ng-repeat="item in User" track by $index>
+                    <td ng-repeat="(key, value) in item">
+                                <span ng-if="getType(value) !== 'boolean' ">
+                                    {{value}}
+                                </span>
+                                <span ng-if="getType(value) === 'boolean' ">
+                                    <input type="checkbox" ng-model="value" disabled>
+                                </span>
+                        <!-- <input ng-model="value"> contenteditable -->
+
+                    </td>
+                    <td >
+                        <a href="#!/UserEdit" ng-click="edit($index,User);" ><i class="fa fa-pencil " ></i></a>
+                        <a ng-click="deleteUser(item);" ><i class="fa fa-trash " ></i></a>
+                    </td>
                 </tr>
+
 
             </li>
         </ul>
         </tbody>
 
     </table>
+
+
 
 </div>
 

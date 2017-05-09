@@ -1,9 +1,9 @@
 <div class="row">
-    <!-- Spaces -->
-    <div class="col-sm-11 squareBox twoCol">
+
+    <div class="col-sm-11 squareBox alignLeft">
         <form >
 
-            <div class="form-group " ng-repeat="(key, value) in currentSelected" >
+            <div class="form-group form-inline " ng-repeat="(key, value) in currentSelected">
                 <label for="usr">{{key}}:</label>
                 <span ng-if="key == 'members'">
                     <select class="form-control" ng-model="currentSelected[key]" multiple >
@@ -12,7 +12,7 @@
                             </option>
                     </select>
                 </span>
-                <span  ng-if="getType(value) != 'boolean' && (key != 'members')">
+                <span  ng-if="getType(value) != 'boolean' && key != 'members'">
                         <input class="form-control"type="text" ng-model="currentSelected[key]" ng-disabled="getReadOnly(key)" >
                 </span>
                 <span ng-if="getType(value) === 'boolean' ">
@@ -25,16 +25,14 @@
             </div>
         </form>
 
-        <a type="save" class="btn btn-primary alignRight" ng-click="save(currentSelected,membersList);">Save</a> &nbsp;&nbsp;
+    </div>
+    <div class="col-sm-11" alignRight>
+        <button type="save" class="btn btn-primary alignRight" ng-click="saveUser(currentSelected,membersList);">Save</button>
         <a  href="#!/Spaces" class="btn btn-primary alignRight">Close</a>
 
 
-        <br>
-
-
-
-
     </div>
+
 </div>
 
 

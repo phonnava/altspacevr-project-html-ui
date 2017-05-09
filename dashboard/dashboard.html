@@ -31,7 +31,7 @@
 
 
         <!-- Users -->
-        <div class="col-md-5 roundBox alignRight ">
+        <div class="col-md-5 panel-group roundBox alignRight ">
             <table class="table table-hover ">
                 <thead>
                 <tr>
@@ -60,16 +60,28 @@
 
     </div>
 
-    <div class="row center">
-        <h2>Stastical Data</h2>
-        <div class="col-md-5 roundBox" ng-controller="stackChart">
+    <div class="row center col-md-12">
+        <div class="col-md-4 roundBox" ng-controller="stackChart">
+
+        <h3>Device Usage</h3>
             <nvd3 options="options" data="data"></nvd3>
+
+        </div>
+            <div class="col-md-3 roundBox" ng-controller="pieChart">
+                <h3>Users & Spaces</h3>
+
+                <nvd3 options="options" data="data"></nvd3>
+
+            </div>
+        <div class="col-md-2 roundBox ">
+            <a  href="https://account.altvr.com/users/sign_up" ng-click="createNewUser()" class="dashIcon"><i class="fa fa-envelope fa-2x"></i></a></th>
+            <a  href="https://account.altvr.com/users/sign_in" ng-click="createNewUser()" class="dashIcon"><i class="fa fa-user fa-3x" fa-lg></i></a></th>
+            <a  href="https://altvr.com/blog/" ng-click="createNewUser()" class="dashIcon"><i class="fa fa-comments fa-3x" fa-lg></i></a></th>
+
 
         </div>
 
 
-
-    </div>
 
 
 

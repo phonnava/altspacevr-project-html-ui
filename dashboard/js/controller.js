@@ -5,21 +5,56 @@
 
 
 //Graphing Options
+var userData
+dashboard.controller('pieChart', function ($scope, $http) {
+    var userHandler = Data.User.getAll();
+    $scope.data = [];
+    userHandler.then(function(data) {
+        $scope.data.push({key:'Users',y:data.length});
+
+    });
+    var spaceHandler = Data.Space.getAll();
+    spaceHandler.then(function(data) {
+        $scope.data.push({key:'Spaces',y:data.length});
+    });
+
+    $scope.options = {
+        chart: {
+            type: 'pieChart',
+            height: 350,
+            x: function(d){return d.key;},
+            y: function(d){return d.y;},
+            showLabels: true,
+            duration: 500,
+            labelThreshold: 0.01,
+            labelSunbeamLayout: true,
+            legend: {
+                margin: {
+                    top: 5,
+                    right: 35,
+                    bottom: 5,
+                    left: 0
+                }
+            }
+        }
+    };
+
+}),
 
 dashboard.controller('stackChart', function ($scope, $http) {
-    var pie = $http.get('js/dbDevices.json');
+    var stack = $http.get('js/dbDevices.json');
     $scope.$on('$locationChangeStart', function (event) {
         window.onresize = null;
     });
 
-    pie.then(function (data) {
+    stack.then(function (data) {
         $scope.data = data.data;
 
 
         $scope.options = {
             chart: {
                 type: 'stackedAreaChart',
-                height: 450,
+                height: 350,
                 margin: {
                     top: 20,
                     right: 20,
@@ -72,7 +107,7 @@ dashboard.controller('stackChart', function ($scope, $http) {
 });
 
 
-dashboard.controller('Model', function ($scope, $http, formService) {
+dashboard.controller('Model', function ($scope, $http,formService) {
     $scope.title = "Model";
     $scope.tests = $http.get('js/db.json');
     $scope.data = [];
@@ -113,6 +148,7 @@ dashboard.controller('Model', function ($scope, $http, formService) {
     $scope.edit = function (index, arraySet) {
         $scope.currentSelected = formService.editData(index, arraySet);
 
+
     };
 
 
@@ -133,10 +169,34 @@ dashboard.controller('Model', function ($scope, $http, formService) {
                 $scope.createSpaceForm[key] = "";
             }
         }
+
+        $scope.createUserForm = angular.copy($scope.User[0]);
+        for (key in $scope.createUserForm) {
+            if (typeof($scope.createUserForm[key]) == 'boolean') {
+                $scope.createUserForm[key] = false;
+            } else if (typeof($scope.createUserForm[key]) == 'number') {
+                if (key == 'created_by') {
+                    $scope.createUserForm[key] = 1;
+                } else {
+                    $scope.createUserForm[key] = "";
+                }
+
+            } else {
+                $scope.createUserForm[key] = "";
+            }
+        }
+
     };
 
     $scope.createNew = function () {
-        $scope.currentSelected = $scope.createSpaceForm;
+        $scope.currentSelected = angular.copy($scope.createSpaceForm);
+    };
+    $scope.createNewUser = function () {
+        $scope.currentSelected = angular.copy($scope.createUserForm);
+    };
+
+    $scope.close = function(){
+        $window.close();
     };
 
 
@@ -154,16 +214,28 @@ dashboard.controller('Model', function ($scope, $http, formService) {
 
     };
 
+    $scope.refreshUserModel = function (url) {
+
+        var userHandler = Data.User.getAll();
+        userHandler.then(function (data) {
+            $scope.originalUserList = data;
+            $scope.User = data;
+            window.location.href = url;
+
+        });
+
+    };
+
     //Updating-Creating Space
 
     $scope.save = function (item) {
-        var found = formService.isFound(item, $scope.originalSpacesList);
+        var found = formService.isFound(item, $scope.originalUserList);
         for (var i = 0; i < item['members'].length; i++) {
             item['members'][i] = parseInt(item['members'][i]);
         }
         if (found) {
-            spaceHandler = Data.Space.updateById(item.id, item);
-            spaceHandler.then(function (data) {
+            userHandler = Data.Space.updateById(item.id, item);
+            userHandler.then(function (data) {
 
                 $scope.refreshSpaceModel("#!/SpaceDetail");
 
@@ -171,9 +243,28 @@ dashboard.controller('Model', function ($scope, $http, formService) {
             });
 
         } else {
-            spaceHandler = Data.Space.create(item);
-            spaceHandler.then(function (data) {
+            userHandler = Data.Space.create(item);
+            userHandler.then(function (data) {
                 $scope.refreshSpaceModel("#!/Spaces");
+
+            });
+        }
+
+    };
+
+    $scope.saveUser = function (item) {
+        var found = formService.isFound(item, $scope.originalUserList);
+        if (found) {
+            userHandler = Data.User.updateById(item.id, item);
+            userHandler.then(function (data) {
+                $scope.refreshUserModel("#!/UserDetail");
+
+            });
+
+        } else {
+            userHandler = Data.User.create(item);
+            userHandler.then(function (data) {
+                $scope.refreshUserModel("#!/Users");
 
             });
         }
@@ -187,6 +278,20 @@ dashboard.controller('Model', function ($scope, $http, formService) {
             var spaceHandler = Data.Space.deleteById(item.id);
             spaceHandler.then(function (data) {
                 $scope.refreshSpaceModel("#!/Spaces");
+
+            });
+
+        } else {
+            console.log("Data not found");
+        }
+    };
+
+    $scope.deleteUser = function (item) {
+        var found = formService.isFound(item, $scope.originalUserList);
+        if (found) {
+            var userHandler = Data.User.deleteById(item.id);
+            userHandler.then(function (data) {
+                $scope.refreshUserModel("#!/Users");
 
             });
 

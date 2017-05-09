@@ -1,0 +1,30 @@
+
+<div class="row">
+    <!-- Spaces -->
+
+    <div class="col-sm-11 squareBox alignLeft">
+
+
+        <form>
+            <h1>User Detail View</h1>
+
+            <div class="form-group" ng-repeat="(key, value) in currentSelected">
+                <label >{{key}}:</label>
+                <span ng-if="getType(value) === 'boolean' " >
+                        <input type="checkbox" ng-model="value" disabled>
+                    </span>
+                <span ng-if="getType(value) !== 'boolean' ">
+                        {{value}}
+                </span>
+
+
+            </div>
+        </form>
+
+        <button type="save" class="btn btn-primary alignRight" ng-click="delete(currentSelected);">Delete</button>&nbsp;&nbsp;
+        <a  href="#!/Users" class="btn btn-primary alignRight">List</a>
+
+
+
+    </div>
+</div>
